@@ -10,17 +10,10 @@
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-    size_t height, i;
-
     if (tree == NULL || func == NULL)
         return;
 
-    height = binary_tree_height(tree);
-
-    for (i = 1; i <= height; i++)
-    {
-        binary_tree_level_recursive(tree, i, func);
-    }
+    binary_tree_level_recursive(tree, 1, func);
 }
 
 /**
@@ -44,6 +37,3 @@ void binary_tree_level_recursive(const binary_tree_t *tree, int level, void (*fu
         binary_tree_level_recursive(tree->left, level - 1, func);
         binary_tree_level_recursive(tree->right, level - 1, func);
     }
-    else
-        return;
-}
